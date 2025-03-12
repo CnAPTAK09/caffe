@@ -2,7 +2,7 @@ const startAnimation = (colum, direction) => {
     const speed = 1;
     let scrollAmount = 0;
 
-    const animate = ( ) => {
+    const animate = () => {
         if (direction === "up") {
             colum.scrollTop += speed;
             scrollAmount += speed;
@@ -23,10 +23,10 @@ const startAnimation = (colum, direction) => {
 
     column.innerHTML += column.innerHTML;
 
-    setTimeout(( ) => requestAnimationFrame(animate), 100);
+    setTimeout(() => requestAnimationFrame(animate), 100);
 };
 
-document.addEventListener("DOMContentLoaded", ( ) => {
+document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".column-up"). forEach(column => startAnimation(column, "up"));
     document.querySelectorAll(".column-down").forEach(column => startAnimation(column, "down"));
 });

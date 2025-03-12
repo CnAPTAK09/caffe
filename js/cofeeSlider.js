@@ -7,7 +7,7 @@ const offsetPercentage = 100 / visibleItems;
 let currentIndex = 2;
 let intervalTime = 5000; 
 
-const updateSlider = ( ) => {
+const updateSlider = () => {
     items.forEach((item, index) => {
         const img = item.querySelector("img");
         img.removeAttribute("id");
@@ -20,23 +20,32 @@ const updateSlider = ( ) => {
     slider.computedStyleMap.transform = `translateX(${offset}%)`;
 };
 
-const resetSlider = ( ) => {
+const resetSlider = () => {
     if (currentIndex === 1) {
         currentIndex = totalItem - (visibleItem + 1);
         slider.style.transition = "none";
-        updateSlider( );
+        updateSlider();
         setTimeout(() => (slider.style.transition = `transform ${transitionDuration} ease-in-out`));
     }
 
     else if (currentIndex === totalItem - 2) {
         currentIndex = 2;
         slider.style.transition = "none";
-        updateSlider( );
-        setTimeout(( ) => (slider.style.transition = `transform ${transitionDuration} ease-in-out`));
+        updateSlider();
+        setTimeout(() => (slider.style.transition = `transform ${transitionDuration} ease-in-out`));
     }
 };
 
+const startSlider = () => {
+    setInterval(() => {
+        currentIndex++;
+        updateSlider();
+        setTimeout(resetSlider, parseFloat(transitionDuration) * 1000);
+    }, intervalTime);
+};
 
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    updateSlider();
+    startSlider();
+});
 

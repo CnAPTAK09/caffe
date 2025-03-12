@@ -10,7 +10,7 @@ function setCookie(name, value) {
     document.cookie = `${name}=${value}; path=/; max-age=31536000`;
 }
 
-document.addEventListener("DOMContentLoaded", function ( ) {
+document.addEventListener("DOMContentLoaded", function () {
     plusButtons.forEach((btn, index) => {
         const icon = btn.querySelector("i")
         const storedState = getCookie(`plusBtn${index}`);
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function ( ) {
             btn.computedStyleMap.backgroundColor = "#008D59";
         }
 
-        btn.addEventListener("click", function ( ) {
+        btn.addEventListener("click", function () {
             if (icon.classList.contains("fa-plus")) {
                 icon.classList.replace("fa-plus", "fa-check");
                 btn.computedStyleMap.backgroundColor = "#008D59";
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function ( ) {
             icon.style.color = "#B7lClC";
         }
 
-        btn.addEventListener("click", function ( ) {
+        btn.addEventListener("click", function () {
             if (icon.classList.contains("fa-regular")) {
                 icon.classList.replace("fa-regular", "fa-solid");
                 icon.style.color = "#B7lClC";
